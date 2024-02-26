@@ -8,8 +8,14 @@ class BarcodePage extends StatefulWidget {
 }
 
 class _BarcodePageState extends State<BarcodePage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
+  TextEditingController barcodeController = TextEditingController();
+  TextEditingController itemnameController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController brandController = TextEditingController();
+  TextEditingController partnoController = TextEditingController();
+  TextEditingController modleController = TextEditingController();
+  TextEditingController costController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +43,22 @@ class _BarcodePageState extends State<BarcodePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-              _inputField("Name", nameController),
-              const SizedBox(height: 20),
-              _inputField("Address", addressController),
-              const SizedBox(height: 50),
+              _inputField("Barcode", barcodeController),
+              const SizedBox(height: 10),
+              _inputField("Item name", itemnameController),
+              const SizedBox(height: 10),
+              _inputField("Category", categoryController),
+              const SizedBox(height: 10),
+              _inputField("Brand", brandController),
+              const SizedBox(height: 10),
+              _inputField("Partno", partnoController),
+              const SizedBox(height: 10),
+              _inputField("Model", modleController),
+              const SizedBox(height: 10),
+              _inputField("Cost", costController),
+              const SizedBox(height: 10),
               _savebtn(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -51,7 +67,7 @@ class _BarcodePageState extends State<BarcodePage> {
   }
 
   Widget _inputField(String hintText, TextEditingController controller,
-      {isPassword = false}) {
+      {bool isPassword = false}) {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
       borderSide: const BorderSide(color: Colors.black),
@@ -68,16 +84,21 @@ class _BarcodePageState extends State<BarcodePage> {
           ),
         ],
       ),
-      child: TextField(
-        controller: controller,
-        style: const TextStyle(color: Colors.black),
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: const TextStyle(color: Colors.black),
-          enabledBorder: border,
-          focusedBorder: border,
-        ),
-        obscureText: isPassword,
+      child: Column(
+        children: [
+          TextField(
+            controller: controller,
+            style: const TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: const TextStyle(color: Colors.grey),
+              enabledBorder: border,
+              focusedBorder: border,
+            ),
+            obscureText: isPassword,
+          ),
+          const SizedBox(height: 10), // Adjust the space between text and text field
+        ],
       ),
     );
   }
@@ -89,7 +110,7 @@ class _BarcodePageState extends State<BarcodePage> {
       },
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.grey,
         shape: const StadiumBorder(),
         padding: const EdgeInsets.symmetric(vertical: 10),
       ),
